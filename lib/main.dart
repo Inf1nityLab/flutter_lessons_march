@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_lesson_march/lesson07/screens/lesson07.dart';
+import 'package:flutter_lesson_march/lesson08/card_screen.dart';
+import 'package:flutter_lesson_march/lesson08/grid_screen.dart';
+import 'package:flutter_lesson_march/lesson08/lesson08.dart';
 
 
 import 'lesson07/screens/task_app.dart';
@@ -21,7 +24,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const Lesson07(),
+      home: const GridScreen(),
     );
   }
 }
