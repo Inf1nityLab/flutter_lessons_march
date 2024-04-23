@@ -7,6 +7,8 @@ import 'package:flutter_lesson_march/lesson08/grid_screen.dart';
 import 'package:flutter_lesson_march/lesson08/lesson08.dart';
 import 'package:flutter_lesson_march/lesson09/lesson09.dart';
 import 'package:flutter_lesson_march/lesson09/tik_tik_screen.dart';
+import 'package:flutter_lesson_march/lesson10/lesson10.dart';
+import 'package:flutter_lesson_march/lesson11/screen/main_screen.dart';
 import 'package:video_player/video_player.dart';
 
 
@@ -37,7 +39,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       darkTheme: ThemeData.dark(),
-      home: const TikTokScreen(),
+      home: const MainScreen(),
     );
   }
 }
