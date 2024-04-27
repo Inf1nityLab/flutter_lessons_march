@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_lesson_march/lesson11/contants/colors.dart';
 import 'package:flutter_lesson_march/lesson11/model/category_data.dart';
+import 'package:flutter_lesson_march/lesson11/model/delivery_model.dart';
 import 'package:flutter_lesson_march/lesson11/screen/detail_screen.dart';
 
 class MainScreen extends StatelessWidget {
@@ -133,31 +134,27 @@ Widget category() {
     height: 150,
     child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: categoryData.length,
+        itemCount: smallCon.length,
+        physics: const BouncingScrollPhysics(),
         itemBuilder: (context, index) {
-          return InkWell(
-            onTap: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>  DetailScreen(category: categoryData[index],)));
-            },
-            child: Container(
-              height: 120,
-              width: 90,
-              margin: const EdgeInsets.only(right: 15),
-              decoration: BoxDecoration(
-                  color: lbackgroundclr, borderRadius: BorderRadius.circular(40)),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  CircleAvatar(
-                    radius: 45,
-                    backgroundImage: AssetImage(categoryData[index].image),
-                  ),
-                  Text(
-                    categoryData[index].name,
-                    style: const TextStyle(fontSize: 20, color: whiteclr),
-                  )
-                ],
-              ),
+          return Container(
+            height: 120,
+            width: 90,
+            margin: const EdgeInsets.only(right: 15),
+            decoration: BoxDecoration(
+                color: lbackgroundclr, borderRadius: BorderRadius.circular(40)),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                CircleAvatar(
+                  radius: 45,
+                  backgroundImage: NetworkImage(smallCon[index].image),
+                ),
+                Text(
+                  smallCon[index].name,
+                  style: const TextStyle(fontSize: 20, color: whiteclr),
+                )
+              ],
             ),
           );
         }),
@@ -169,42 +166,53 @@ Widget delivery() {
     height: 300,
     child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: 5,
+        itemCount: smallCon.length,
         itemBuilder: (context, index) {
-          return Container(
-            width: 300,
-            margin: const EdgeInsets.only(right: 10),
-            decoration: BoxDecoration(
-              color: lbackgroundclr,
-              borderRadius: BorderRadius.circular(20),
-            ),
-            child: Column(
-              children: [
-                Stack(
-                  children: [
-                    Container(
-                      height: 200,
-                      decoration: const BoxDecoration(
-                        color: Colors.grey,
-                          image: DecorationImage(
-                              image: AssetImage('assets/img/car.png'))),
-                    ),
-                    Align(
-                      alignment: Alignment.topRight,
-                      child: IconButton(onPressed: (){}, icon: const Icon(Icons.favorite, color: whiteclr, size: 35,),),
-                    )
-                  ],
-                ),
-                const SizedBox(height: 10,),
-                 Row(
-                  children: [
-                    const Text('BurgerLab', style: TextStyle(fontSize: 20, color: whiteclr, fontWeight: FontWeight.w600),),
-                    Expanded(child: Container()),
-                    const Icon(Icons.timer_outlined, color: primaryclr,),
-                    const Text('15-20 min', style: TextStyle(fontSize: 20, color: whiteclr, fontWeight: FontWeight.w500),),
-                  ],
-                )
-              ],
+          return InkWell(
+            onTap: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>DetailScreen(delivery: smallCon[index])));
+            },
+            child: Container(
+              width: 300,
+              margin: const EdgeInsets.only(right: 10),
+              decoration: BoxDecoration(
+                color: lbackgroundclr,
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: Column(
+                children: [
+                  Stack(
+                    children: [
+                      Container(
+                        height: 200,
+                        decoration:  BoxDecoration(
+                          color: Colors.grey,
+                            image: DecorationImage(
+                                image: NetworkImage(bigCon[index].image))),
+                      ),
+                      Align(
+                        alignment: Alignment.topRight,
+                        child: IconButton(onPressed: (){}, icon: const Icon(Icons.favorite, color: whiteclr, size: 35,),),
+                      )
+                    ],
+                  ),
+                  const SizedBox(height: 10,),
+                   Row(
+                    children: [
+                       Text(smallCon[index].name, style: const TextStyle(fontSize: 20, color: whiteclr, fontWeight: FontWeight.w600),),
+                      Expanded(child: Container()),
+                      const Icon(Icons.timer_outlined, color: primaryclr,),
+                       //Text(smallCon[index], style: const TextStyle(fontSize: 20, color: whiteclr, fontWeight: FontWeight.w500),),
+                    ],
+                  ),
+                  const SizedBox(height: 10,),
+                 Row(children: [
+                   const Icon(Icons.star, color: Colors.yellow,),
+                   const SizedBox(width: 5,),
+                   Text(smallCon[index].ratting, style: const TextStyle(fontSize: 20, color: whiteclr, fontWeight: FontWeight.w500),),
+                 ],)
+                ],
+              ),
             ),
           );
         }),
