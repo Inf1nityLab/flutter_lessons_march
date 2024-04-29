@@ -162,15 +162,20 @@ Widget category() {
 }
 
 Widget delivery() {
+  List<String> _data = ['Fastfood', 'Chicken', 'Fries'];
   return SizedBox(
-    height: 300,
+    height: 330,
     child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: smallCon.length,
         itemBuilder: (context, index) {
           return InkWell(
-            onTap: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>DetailScreen(delivery: smallCon[index])));
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          DetailScreen(delivery: smallCon[index])));
             },
             child: Container(
               width: 300,
@@ -185,32 +190,82 @@ Widget delivery() {
                     children: [
                       Container(
                         height: 200,
-                        decoration:  BoxDecoration(
-                          color: Colors.grey,
+                        decoration: BoxDecoration(
+                            color: Colors.grey,
                             image: DecorationImage(
                                 image: NetworkImage(bigCon[index].image))),
                       ),
                       Align(
                         alignment: Alignment.topRight,
-                        child: IconButton(onPressed: (){}, icon: const Icon(Icons.favorite, color: whiteclr, size: 35,),),
+                        child: IconButton(
+                          onPressed: () {},
+                          icon: const Icon(
+                            Icons.favorite,
+                            color: whiteclr,
+                            size: 35,
+                          ),
+                        ),
                       )
                     ],
                   ),
-                  const SizedBox(height: 10,),
-                   Row(
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Row(
                     children: [
-                       Text(smallCon[index].name, style: const TextStyle(fontSize: 20, color: whiteclr, fontWeight: FontWeight.w600),),
+                      Text(
+                        smallCon[index].name,
+                        style: const TextStyle(
+                            fontSize: 20,
+                            color: whiteclr,
+                            fontWeight: FontWeight.w600),
+                      ),
                       Expanded(child: Container()),
-                      const Icon(Icons.timer_outlined, color: primaryclr,),
-                       //Text(smallCon[index], style: const TextStyle(fontSize: 20, color: whiteclr, fontWeight: FontWeight.w500),),
+                      const Icon(
+                        Icons.timer_outlined,
+                        color: primaryclr,
+                      ),
+                      //Text(smallCon[index], style: const TextStyle(fontSize: 20, color: whiteclr, fontWeight: FontWeight.w500),),
                     ],
                   ),
-                  const SizedBox(height: 10,),
-                 Row(children: [
-                   const Icon(Icons.star, color: Colors.yellow,),
-                   const SizedBox(width: 5,),
-                   Text(smallCon[index].ratting, style: const TextStyle(fontSize: 20, color: whiteclr, fontWeight: FontWeight.w500),),
-                 ],)
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Row(
+                    children: [
+                      const Icon(
+                        Icons.star,
+                        color: Colors.yellow,
+                      ),
+                      const SizedBox(
+                        width: 5,
+                      ),
+                      Text(
+                        smallCon[index].ratting,
+                        style: const TextStyle(
+                            fontSize: 20,
+                            color: whiteclr,
+                            fontWeight: FontWeight.w500),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 5,),
+                  SizedBox(
+                    height: 40,
+                    child: ListView.builder(scrollDirection: Axis.horizontal,itemCount: _data.length,itemBuilder: (context, index){
+                      return Container(
+                        height: 40,
+                        margin: const EdgeInsets.only(right: 15),
+                        padding: const EdgeInsets.all(5),
+                        decoration: BoxDecoration(
+                          color: Colors.grey[900],
+                          borderRadius: BorderRadius.circular(15),
+                          border: Border.all(width: 1)
+                        ),
+                        child: Center(child: Text(_data[index], style: const TextStyle(fontSize: 17, color: whiteclr),)),
+                      );
+                    }),
+                  )
                 ],
               ),
             ),
