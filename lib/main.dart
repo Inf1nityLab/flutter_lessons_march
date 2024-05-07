@@ -1,43 +1,67 @@
-import 'package:device_preview/device_preview.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_lesson_march/lesson12/view/add_screen.dart';
+import 'lesson12/core/colors.dart';
 import 'lesson12/view/main_screen.dart';
 
 
 
-
-
 void main() {
-  WidgetsFlutterBinding.ensureInitialized();
-
-  runApp(
-    DevicePreview(
-      enabled: !kReleaseMode,
-      builder: (context) => const MyApp(), // Wrap your app
-    ),
-  );
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      useInheritedMediaQuery: true,
-      locale: DevicePreview.locale(context),
-      builder: DevicePreview.appBuilder,
-      debugShowCheckedModeBanner: false,
+      title: 'Flutter Demo',
       theme: ThemeData(
+        scaffoldBackgroundColor: AppColor.indigo,
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      darkTheme: ThemeData.dark(),
-      home: const MainScreen(),
+      home:  const  AddScreen(),
     );
   }
 }
+
+
+
+//
+//
+//
+// void main() {
+//   WidgetsFlutterBinding.ensureInitialized();
+//
+//   runApp(
+//     DevicePreview(
+//       enabled: !kReleaseMode,
+//       builder: (context) => const MyApp(), // Wrap your app
+//     ),
+//   );
+// }
+//
+// class MyApp extends StatelessWidget {
+//   const MyApp({super.key});
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       useInheritedMediaQuery: true,
+//       locale: DevicePreview.locale(context),
+//       builder: DevicePreview.appBuilder,
+//       debugShowCheckedModeBanner: false,
+//       theme: ThemeData(
+//         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+//         useMaterial3: true,
+//       ),
+//       darkTheme: ThemeData.dark(),
+//       home: const MainScreen(),
+//     );
+//   }
+// }
 
 
 
